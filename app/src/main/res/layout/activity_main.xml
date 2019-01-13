@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main"
+    android:theme="@style/Widget.MaterialComponents.BottomAppBar.Colored">
+
+
+<!--
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+        -->
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabAttached="true"
+        app:fabCradleRoundedCornerRadius="8dp"
+        app:fabCradleVerticalOffset="0dp"
+        app:fabCradleDiameter="67dp"
+        android:theme="@style/Theme.MyApp"
+        app:fabAlignmentMode="center"
+        app:backgroundTint="@color/colorPrimary"
+        app:navigationIcon="@drawable/ic_menu_black_36dp"
+        app:hideOnScroll="true"
+        app:layout_scrollFlags="scroll|enterAlways"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_black_48dp"
+        app:rippleColor="#ffa303"
+        app:layout_anchor="@id/bottom_app_bar" />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
