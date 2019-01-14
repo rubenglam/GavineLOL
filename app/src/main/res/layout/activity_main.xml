@@ -7,76 +7,78 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main"
+    android:background="@android:color/white"
     android:theme="@style/Widget.MaterialComponents.BottomAppBar.Colored">
 
-
-<!--
+    <!--
     <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-        -->
+    -->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-    <LinearLayout android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.SearchView
+        <LinearLayout android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                app:elevation="0dp">
 
-    </LinearLayout>
+                <TextView android:id="@+id/txtviewTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="26sp"
+                    android:text="@string/titleApp"
+                    android:gravity="center"
+                    android:fontFamily="monospace"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/black"/>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="@string/buscar_jugador_hint"
+                app:iconifiedByDefault="false"
+                android:background="@drawable/bottomappbarlayout_shape"/>
+
+            <TextView android:id="@+id/prueba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_gravity="bottom"
-        app:fabAttached="true"
-        app:fabCradleRoundedCornerRadius="5dp"
+        android:backgroundTint="@color/colorPrimary"
         app:fabCradleVerticalOffset="10dp"
-        app:fabCradleDiameter="65dp"
-        android:theme="@style/Theme.MyApp"
         app:fabAlignmentMode="center"
+        app:fabCradleRoundedCornerRadius="5dp"
+        app:fabCradleMargin="6dp"
         app:navigationIcon="@drawable/ic_menu_black_36dp"
         app:hideOnScroll="true"
-        android:background="@drawable/bottomappbarlayout_shape"
         app:layout_scrollFlags="scroll|enterAlways"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:src="@drawable/ic_add_black_48dp"
-        android:elevation="12dp"
-        android:backgroundTint="@android:color/white"
-        android:theme="@style/Theme.MyApp"
-        app:layout_anchor="@id/bottom_app_bar" />
-
-
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_anchor="@id/bottom_app_bar"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

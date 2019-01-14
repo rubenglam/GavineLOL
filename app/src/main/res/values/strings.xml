@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Gavine</string>
+    <string name="titleApp">Gavine</string>
+    <string name="buscar_jugador_hint">Buscar un jugador</string>
 </resources>

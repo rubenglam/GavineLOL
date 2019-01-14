@@ -5,14 +5,19 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import droid.grupocelio.gavine.utils.ConnectionApi;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         //RecyclerView recyclerView = findViewById(R.id.recyclerView);
         com.google.android.material.bottomappbar.BottomAppBar bottomAppBar = findViewById(R.id.bottom_app_bar);
         FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        TextView txtviewTitle = findViewById(R.id.txtviewTitle);
+
+        txtviewTitle.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/GoogleSans-Medium.ttf"));
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        try {
+            JSONObject json = ConnectionApi.getConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
