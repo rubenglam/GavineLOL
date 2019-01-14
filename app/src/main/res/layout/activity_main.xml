@@ -57,14 +57,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:fabAttached="true"
-        app:fabCradleRoundedCornerRadius="8dp"
-        app:fabCradleVerticalOffset="0dp"
-        app:fabCradleDiameter="67dp"
+        app:fabCradleRoundedCornerRadius="5dp"
+        app:fabCradleVerticalOffset="10dp"
+        app:fabCradleDiameter="65dp"
         android:theme="@style/Theme.MyApp"
         app:fabAlignmentMode="center"
-        app:backgroundTint="@color/colorPrimary"
         app:navigationIcon="@drawable/ic_menu_black_36dp"
         app:hideOnScroll="true"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="8dp"
         app:layout_scrollFlags="scroll|enterAlways"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -72,7 +73,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add_black_48dp"
-        app:rippleColor="#ffa303"
+        android:elevation="12dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:theme="@style/Theme.MyApp"
         app:layout_anchor="@id/bottom_app_bar" />
 
 
