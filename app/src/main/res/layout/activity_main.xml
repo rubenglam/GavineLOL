@@ -64,8 +64,7 @@
         app:fabAlignmentMode="center"
         app:navigationIcon="@drawable/ic_menu_black_36dp"
         app:hideOnScroll="true"
-        android:backgroundTint="@color/colorPrimary"
-        android:elevation="8dp"
+        android:background="@drawable/bottomappbarlayout_shape"
         app:layout_scrollFlags="scroll|enterAlways"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -74,7 +73,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add_black_48dp"
         android:elevation="12dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@android:color/white"
         android:theme="@style/Theme.MyApp"
         app:layout_anchor="@id/bottom_app_bar" />
 
