@@ -3,6 +3,7 @@ package droid.grupocelio.gavine;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import droid.grupocelio.gavine.utils.ConnectionApi;
@@ -31,54 +32,65 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    com.google.android.material.bottomappbar.BottomAppBar bottomAppBar;
+    FloatingActionButton floatingActionButton;
+    TextView txtviewTitle;
+    androidx.appcompat.widget.SearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        com.google.android.material.bottomappbar.BottomAppBar bottomAppBar = findViewById(R.id.bottom_app_bar);
-        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
-        TextView txtviewTitle = findViewById(R.id.txtviewTitle);
+        bottomAppBar = findViewById(R.id.bottom_app_bar);
+        floatingActionButton = findViewById(R.id.fab);
+        txtviewTitle = findViewById(R.id.txtviewTitle);
+        searchView = findViewById(R.id.searchView);
 
+        // GoogleSans Font
         txtviewTitle.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/GoogleSans-Medium.ttf"));
-
+        // Listeners
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
         bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+        searchView.setOnQueryTextListener(new ExtendOnQueryTextListener());
 
-        GetData();
+        GetDataOnStart();
 
     }
 
-    private void GetData() {
-        try
-        {
+    private void GetDataOnStart() {
 
-            new Thread(new Runnable() {
-                public void run() {
-                    try {
-                        JSONObject jsonObject;
-                        jsonObject = jsonReader.readJsonFromUrl("https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/RiotSchmick?api_key=RGAPI-e339225e-a4f4-44b9-8015-b4bc13d516d4");
-                        jsonObject.toString();
-                    }
-                    catch (Exception e) { e.printStackTrace(); }
-                }
-            }).start();
+        ConnectionApi connection = new ConnectionApi();
+        connection.start();
+        searchView.setQueryHint(connection.getNameS());
+
+    }
+
+    private class ExtendOnQueryTextListener implements SearchView.OnQueryTextListener {
+
+        public ExtendOnQueryTextListener() {
 
         }
-        catch (Exception e) {
-            e.printStackTrace();
+
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            return false;
         }
     }
 
