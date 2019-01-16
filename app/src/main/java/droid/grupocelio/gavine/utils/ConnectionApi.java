@@ -13,10 +13,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ConnectionApi extends Thread {
+import droid.grupocelio.gavine.helpers.URLHelper;
 
-    private static String API_KEY = "RGAPI-e339225e-a4f4-44b9-8015-b4bc13d516d4";
-    private static String RIOT_URL_API = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/RubenGlam?api_key=";
+public class ConnectionApi extends Thread {
 
     String htmlCode;
 
@@ -25,7 +24,7 @@ public class ConnectionApi extends Thread {
 
         try
         {
-            URL url = new URL(RIOT_URL_API + API_KEY);
+            //URL url = new URL(URLHelper.getUrl());
             InputStream inputStream = url.openStream();
             BufferedInputStream bis = new BufferedInputStream(inputStream);
             byte[] buffer = new byte[1024];
