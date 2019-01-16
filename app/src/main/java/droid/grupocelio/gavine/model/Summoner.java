@@ -1,38 +1,36 @@
 package droid.grupocelio.gavine.model;
 
 import droid.grupocelio.gavine.dao.SummonerDAO;
-import droid.grupocelio.gavine.interfaces.ISummonerV4;
 
-public class Summoner implements ISummonerV4 {
+public class Summoner {
 
     int profileIconId;
     String name;
     String puuid;
     int summonerLevel;
-    int revisionDate;
+    long revisionDate;
     String encryptedId;
     String accountEncryptedId;
 
-    @Override
-    public Summoner getSummonerById(int id) {
-        return null;
-    }
-
-    @Override
-    public Summoner getSummonerByName(String name)
+    public static Summoner getSummonerByName(String name) throws Exception
     {
         Summoner summoner = SummonerDAO.getSummonerByName(name);
         return summoner;
     }
 
-    @Override
-    public Summoner getSummonerByPUUID(String puuid) {
-        return null;
+    public static Summoner getSummonerById(int id)
+    {
+        return new Summoner();
     }
 
-    @Override
-    public Summoner getSummonerByEncryptedId(String encryptedId) {
-        return null;
+    public static Summoner getSummonerByPUUID(String puuid)
+    {
+        return new Summoner();
+    }
+
+    public Summoner getSummonerByEncryptedId(String encryptedId)
+    {
+        return new Summoner();
     }
 
     //region PROPERTIES
@@ -69,11 +67,11 @@ public class Summoner implements ISummonerV4 {
         this.summonerLevel = summonerLevel;
     }
 
-    public int getRevisionDate() {
+    public long getRevisionDate() {
         return revisionDate;
     }
 
-    public void setRevisionDate(int revisionDate) {
+    public void setRevisionDate(long revisionDate) {
         this.revisionDate = revisionDate;
     }
 

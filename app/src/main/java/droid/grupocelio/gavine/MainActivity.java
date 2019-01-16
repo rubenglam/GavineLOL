@@ -1,37 +1,18 @@
 package droid.grupocelio.gavine;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
+import droid.grupocelio.gavine.model.Summoner;
 import droid.grupocelio.gavine.utils.AppPreferences;
-import droid.grupocelio.gavine.utils.ConnectionApi;
-import droid.grupocelio.gavine.utils.jsonReader;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtviewTitle;
     androidx.appcompat.widget.SearchView searchView;
     TextView txtviewExample;
+    Summoner summoner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
         txtviewExample = findViewById(R.id.prueba);
 
+        // GetData
+        try { summoner = Summoner.getSummonerByName("RubenGlam"); }
+        catch (Exception e) { e.printStackTrace(); }
+
         // GoogleSans Font
         txtviewTitle.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/GoogleSans-Medium.ttf"));
         // Listeners
@@ -75,26 +61,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         searchView.setOnQueryTextListener(new ExtendOnQueryTextListener());
-        searchView.setOnClickListener(new ExtendOnClickListener(this));
+        searchView.setOnClickListener(new ExtendOnClickListener(this, summoner));
 
-        //GetDataOnStart();
-
-    }
-
-    private String GetDataOnStart() {
-
-        ConnectionApi connection = new ConnectionApi();
-        connection.start();
-        return  connection.getNameS();
     }
 
     private class ExtendOnClickListener implements View.OnClickListener {
 
         Context context;
+        Summoner summoner;
 
-        public ExtendOnClickListener(Context context) {
+        public ExtendOnClickListener(Context context, Summoner summoner) {
 
             this.context = context;
+            this.summoner = summoner;
 
         }
 
@@ -102,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.searchView:
-                    searchView.setAnimation(new TranslateAnimation(0,0,0,100,100,100,0,10));
-                    MainActivity.this.txtviewExample.setText(GetDataOnStart());
+                    MainActivity.this.txtviewExample.setText(String.valueOf(summoner.getSummonerLevel()));
                     break;
             }
         }
