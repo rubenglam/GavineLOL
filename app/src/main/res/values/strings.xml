@@ -2,4 +2,13 @@
     <string name="app_name">Gavine</string>
     <string name="titleApp">Gavine</string>
     <string name="buscar_jugador_hint">Buscar un jugador</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_esports">Esports</string>
+    <string name="title_champion">Champion</string>
+    <string name="title_ranking">Ranking</string>
+    <string name="title_news">News</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
