@@ -17,6 +17,7 @@ class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        toolbar_top.inflateMenu(R.menu.home_menu)
 
         navigation_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         (navigation_view as BottomNavigationView).selectedItemId = R.id.navigation_home
@@ -62,7 +63,7 @@ class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //menuInflater.inflate()
+        menuInflater.inflate(R.menu.home_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
