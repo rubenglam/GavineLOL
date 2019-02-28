@@ -8,6 +8,8 @@
     <string name="title_champion">Champion</string>
     <string name="title_ranking">Ranking</string>
     <string name="title_news">News</string>
+    <string name="card_login_please">Login for show your account</string>
+    <string name="card_button_login">LOGIN</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
