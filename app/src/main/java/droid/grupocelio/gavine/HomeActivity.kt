@@ -1,17 +1,18 @@
 package droid.grupocelio.gavine
 
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
-import android.widget.TextView
-import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import droid.grupocelio.gavine.fragments.HomeFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionListener  {
+    override fun onFragmentInteraction(uri: Uri) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         item ->
-        //createFragmentHome()
+
         when (item.itemId) {
             R.id.navigation_esports -> {
                 txtviewTitle.setText(R.string.title_esports)
@@ -37,6 +38,7 @@ class HomeActivity : AppCompatActivity() {
             }
             R.id.navigation_home -> {
                 txtviewTitle.setText(R.string.title_home)
+                createFragmentHome("Home")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_ranking -> {
@@ -51,9 +53,9 @@ class HomeActivity : AppCompatActivity() {
         false
     }
 
-    fun createFragmentHome() {
+    fun createFragmentHome(text: String) {
         val transaction = getSupportFragmentManager().beginTransaction()
-        var fragment : androidx.fragment.app.Fragment = HomeFragment.newInstance("a", "n") as androidx.fragment.app.Fragment
+        var fragment : androidx.fragment.app.Fragment = HomeFragment.newInstance(text, "n") as androidx.fragment.app.Fragment
         transaction.replace(R.id.container, fragment)
         //transaction.addToBackStack(null)
         transaction.commit()
