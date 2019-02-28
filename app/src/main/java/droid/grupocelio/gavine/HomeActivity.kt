@@ -2,6 +2,7 @@ package droid.grupocelio.gavine
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.view.Menu
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,14 +18,14 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         navigation_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        navigation_view.selectedItemId = R.id.navigation_home
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_view)
-        var txtviewTitle : TextView = findViewById(R.id.txtviewTitle)
+        (navigation_view as BottomNavigationView).selectedItemId = R.id.navigation_home
+
         txtviewTitle.typeface = Typeface.createFromAsset(this.assets, "fonts/GoogleSans-Medium.ttf")
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         item ->
+        //createFragmentHome()
         when (item.itemId) {
             R.id.navigation_esports -> {
                 txtviewTitle.setText(R.string.title_esports)
@@ -36,7 +37,6 @@ class HomeActivity : AppCompatActivity() {
             }
             R.id.navigation_home -> {
                 txtviewTitle.setText(R.string.title_home)
-                createFragmentHome()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_ranking -> {
@@ -57,6 +57,11 @@ class HomeActivity : AppCompatActivity() {
         transaction.replace(R.id.container, fragment)
         //transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //menuInflater.inflate()
+        return super.onCreateOptionsMenu(menu)
     }
 
 }
