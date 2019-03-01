@@ -7,4 +7,5 @@
     <dimen name="material_card_view_content_padding">10dp</dimen>
     <dimen name="material_card_view_stroke_width">1dp</dimen>
     <dimen name="material_card_view_title_size">20sp</dimen>
+    <dimen name="app_title_text_size">20sp</dimen>
 </resources>

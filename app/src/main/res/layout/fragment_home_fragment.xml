@@ -35,12 +35,9 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="@dimen/material_card_view_elevation"
             app:contentPadding="@dimen/material_card_view_content_padding"
-            app:cardCornerRadius="@dimen/material_card_view_corner_radius"
             app:strokeWidth="@dimen/material_card_view_stroke_width"
-            app:strokeColor="@color/colorStrokeCardViewMaterial"
-            android:layout_margin="@dimen/material_card_view_margin"
+            style="@style/Theme.MyApp.MaterialCardView"
             android:layout_gravity="start">
 
             <LinearLayout
