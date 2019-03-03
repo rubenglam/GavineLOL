@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@+id/homeScrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragments.HomeFragment">
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentPadding="@dimen/material_card_view_content_padding"
+            app:strokeWidth="@dimen/material_card_view_stroke_width"
+            app:strokeColor="@color/colorStrokeCardViewMaterial"
+            style="@style/Theme.MyApp.MaterialCardView"
+            android:layout_gravity="start">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/material_card_view_title_size"
+                    android:text="@string/card_login_please"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="200dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:elevation="0dp"
+                    android:background="@drawable/material_button_shape"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/card_button_login"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentPadding="@dimen/material_card_view_content_padding"
+            app:strokeWidth="@dimen/material_card_view_stroke_width"
+            app:strokeColor="@color/colorStrokeCardViewMaterial"
+            style="@style/Theme.MyApp.MaterialCardView"
+            android:layout_gravity="start">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/material_card_view_title_size"
+                    android:text="@string/card_login_please"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="200dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:elevation="0dp"
+                    android:background="@drawable/material_button_shape"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/card_button_login"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentPadding="@dimen/material_card_view_content_padding"
+            app:strokeWidth="@dimen/material_card_view_stroke_width"
+            app:strokeColor="@color/colorStrokeCardViewMaterial"
+            style="@style/Theme.MyApp.MaterialCardView"
+            android:layout_gravity="start">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/material_card_view_title_size"
+                    android:text="@string/card_login_please"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="200dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:elevation="0dp"
+                    android:background="@drawable/material_button_shape"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/card_button_login"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentPadding="@dimen/material_card_view_content_padding"
+            app:strokeWidth="@dimen/material_card_view_stroke_width"
+            app:strokeColor="@color/colorStrokeCardViewMaterial"
+            style="@style/Theme.MyApp.MaterialCardView"
+            android:layout_gravity="start">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/material_card_view_title_size"
+                    android:text="@string/card_login_please"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="200dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:elevation="0dp"
+                    android:background="@drawable/material_button_shape"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/card_button_login"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:text="Favorites"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFavourites"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</ScrollView>

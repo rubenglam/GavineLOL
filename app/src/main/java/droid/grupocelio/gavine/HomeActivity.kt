@@ -7,37 +7,53 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.widget.TextView
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.View
+import android.view.ViewTreeObserver
 import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.WindowDecorActionBar
-import droid.grupocelio.gavine.fragments.HomeFragment
+import androidx.fragment.app.FragmentTransaction
+import droid.grupocelio.gavine.fragments.*
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.view_action_bar.*
 import org.w3c.dom.Text
 
-class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionListener  {
+class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionListener,
+        EsportsFragment.OnFragmentInteractionListener, RankingFragment.OnFragmentInteractionListener,
+        ChampionsFragment.OnFragmentInteractionListener, NewsFragment.OnFragmentInteractionListener {
+
     override fun onFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    var mActionBar : ActionBar? = null
+    //var mActionBar : ActionBar? = null
     var mViewActionBar : View? = null
+    var mEsportsFragment : EsportsFragment? = null
+    var mChampionsFragment : ChampionsFragment? = null
+    var mHomeFragment : HomeFragment? = null
+    var mRankingFragment : RankingFragment? = null
+    var mNewsFragment : NewsFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        mActionBar = supportActionBar
-        mActionBar!!.setDisplayShowCustomEnabled(true);
-        mActionBar!!.setDisplayShowTitleEnabled(false);
+        //mActionBar = supportActionBar
+        //mActionBar!!.setDisplayShowCustomEnabled(true);
+        //mActionBar!!.setDisplayShowTitleEnabled(false);
 
-        var inflator = LayoutInflater.from(this)
-        mViewActionBar = inflator.inflate(R.layout.view_action_bar, null)
+        //var inflator = LayoutInflater.from(this)
+        viewActionBar.findViewById<TextView>(R.id.title).typeface = Typeface.createFromAsset(this.assets, "fonts/GoogleSans-Medium.ttf")
 
-        mActionBar!!.setCustomView(mViewActionBar)
-        mViewActionBar!!.findViewById<TextView>(R.id.title).typeface = Typeface.createFromAsset(this.assets, "fonts/GoogleSans-Medium.ttf")
-        //toolbar_top.inflateMenu(R.menu.home_menu)
+        //mActionBar!!.setCustomView(mViewActionBar)
+        //var txtViewTitle = mViewActionBar!!.findViewById<TextView>(R.id.title)
+        //txtViewTitle.typeface = Typeface.createFromAsset(this.assets, "fonts/GoogleSans-Medium.ttf")
+        //txtViewTitle.setTextColor(resources.getColor(R.color.colorAccent))
+
+        //supportActionBar!!.elevation = 0f
 
         navigation_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         (navigation_view as BottomNavigationView).selectedItemId = R.id.navigation_home
@@ -46,44 +62,94 @@ class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         item ->
-
+        val transaction = getSupportFragmentManager().beginTransaction()
         when (item.itemId) {
             R.id.navigation_esports -> {
-                mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_esports)
+                //mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_esports)
+                createFragmentEsports(transaction)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_champion -> {
-                mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_champion)
+                //mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_champion)
+                createFragmentChampions(transaction)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_home -> {
-                mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_home)
-                createFragmentHome("Home")
+                //mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_home)
+                createFragmentHome(transaction)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_ranking -> {
-                mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_ranking)
+                //mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_ranking)
+                createFragmentRanking(transaction)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_news -> {
-                mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_news)
+                //mViewActionBar?.findViewById<TextView>(R.id.title)!!.text = getString(R.string.title_news)
+                createFragmentNews(transaction)
                 return@OnNavigationItemSelectedListener true
             }
         }
         false
     }
 
-    fun createFragmentHome(text: String) {
-        val transaction = getSupportFragmentManager().beginTransaction()
-        var fragment = HomeFragment.newInstance(text, "n") as androidx.fragment.app.Fragment
-        transaction.replace(R.id.container, fragment)
-        //transaction.addToBackStack(null)
+    //region INITIALIZE FRAGMENTS
+
+    fun createFragmentEsports(transaction : FragmentTransaction) {
+        mEsportsFragment = EsportsFragment.newInstance()
+        transaction.replace(R.id.container, mEsportsFragment as androidx.fragment.app.Fragment)
         transaction.commit()
     }
+
+    fun createFragmentChampions(transaction : FragmentTransaction) {
+        mChampionsFragment = ChampionsFragment.newInstance()
+        transaction.replace(R.id.container, mChampionsFragment as androidx.fragment.app.Fragment)
+        transaction.commit()
+    }
+
+    fun createFragmentHome(transaction : FragmentTransaction) {
+        mHomeFragment = HomeFragment.newInstance()
+        mHomeFragment!!.setOnScrollListener(ExtendOnScrollChangedListener(appBarLayout))
+        transaction.replace(R.id.container, mHomeFragment as androidx.fragment.app.Fragment)
+        transaction.commit()
+    }
+
+    fun createFragmentRanking(transaction : FragmentTransaction) {
+        mRankingFragment = RankingFragment.newInstance()
+        transaction.replace(R.id.container, mRankingFragment as androidx.fragment.app.Fragment)
+        transaction.commit()
+    }
+
+    fun createFragmentNews(transaction : FragmentTransaction) {
+        mNewsFragment = NewsFragment.newInstance()
+        transaction.replace(R.id.container, mNewsFragment as androidx.fragment.app.Fragment)
+        transaction.commit()
+    }
+
+    //endregion
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.home_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+    //region OnScrollChanged
+
+    class ExtendOnScrollChangedListener : View.OnScrollChangeListener {
+
+        var mActionBar : View? get() { return mActionBar }
+
+        constructor(view : View) {
+            mActionBar = view
+        }
+
+        override fun onScrollChange(v: View?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int) {
+            if(scrollY > 0) mActionBar!!.elevation = 8f
+            else mActionBar!!.elevation = 0f
+        }
+
+    }
+
+    //endregion
 
 }

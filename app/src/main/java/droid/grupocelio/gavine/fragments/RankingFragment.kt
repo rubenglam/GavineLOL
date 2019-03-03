@@ -3,35 +3,32 @@ package droid.grupocelio.gavine.fragments
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
-import android.widget.ScrollView
-import droid.grupocelio.gavine.HomeActivity
 
 import droid.grupocelio.gavine.R
-import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : androidx.fragment.app.Fragment() {
-
+class RankingFragment : androidx.fragment.app.Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
-    private var mScrollChangedListener : View.OnScrollChangeListener? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        var containerView = inflater.inflate(R.layout.fragment_home, container, false)
-        return containerView
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_ranking, container, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
-    }
-
-    var mAppBar : View? = null
-    fun setOnScrollListener(scrollListener : View.OnScrollChangeListener) {
-        mScrollChangedListener = scrollListener
     }
 
     override fun onAttach(context: Context) {
@@ -46,12 +43,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
     override fun onDetach() {
         super.onDetach()
         listener = null
-    }
-
-    override fun onStart() {
-        //if(homeScrollView?.scrollY == 0)
-        homeScrollView?.setOnScrollChangeListener(mScrollChangedListener)
-        super.onStart()
     }
 
     /**
@@ -71,10 +62,17 @@ class HomeFragment : androidx.fragment.app.Fragment() {
     }
 
     companion object {
-
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment RankingFragment.
+         */
+        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() =
-                HomeFragment()
+                RankingFragment()
     }
-
 }

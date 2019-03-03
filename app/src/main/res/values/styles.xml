@@ -7,6 +7,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="GlamTheme"  parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:actionBarStyle">@style/GlamTheme.ActionBar</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="GlamTheme.ActionBar" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:popupElevation">0dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
     <style name="Theme.MyApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
 
         <!-- Original AppCompat attributes. -->

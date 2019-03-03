@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4285f4</color>
+    <color name="colorPrimary">#4286f5</color>
+    <color name="colorAccent">#FFFFFF</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
     <color name="colorStrokeCardViewMaterial">#C4C4C4</color>
     <color name="colorLightPrimary">#0091F3</color>
-
+    <color name="colorGrayPrimary">#81868c</color>
+    
     <!-- BASIC COLORS -->
     <color name="colorWhite">#ffffff</color>
 
