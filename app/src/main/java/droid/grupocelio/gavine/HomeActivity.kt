@@ -12,6 +12,7 @@ import android.graphics.Color
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.WindowDecorActionBar
@@ -58,6 +59,8 @@ class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
         navigation_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         (navigation_view as BottomNavigationView).selectedItemId = R.id.navigation_home
 
+        AlertDialog.Builder(this).create()
+
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
@@ -96,32 +99,43 @@ class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
     //region INITIALIZE FRAGMENTS
 
     fun createFragmentEsports(transaction : FragmentTransaction) {
-        mEsportsFragment = EsportsFragment.newInstance()
+        if(mEsportsFragment == null) {
+            mEsportsFragment = EsportsFragment.newInstance()
+        }
         transaction.replace(R.id.container, mEsportsFragment as androidx.fragment.app.Fragment)
         transaction.commit()
     }
 
     fun createFragmentChampions(transaction : FragmentTransaction) {
-        mChampionsFragment = ChampionsFragment.newInstance()
+        if(mChampionsFragment == null) {
+            mChampionsFragment = ChampionsFragment.newInstance()
+        }
         transaction.replace(R.id.container, mChampionsFragment as androidx.fragment.app.Fragment)
         transaction.commit()
     }
 
     fun createFragmentHome(transaction : FragmentTransaction) {
-        mHomeFragment = HomeFragment.newInstance()
-        mHomeFragment!!.setOnScrollListener(ExtendOnScrollChangedListener(appBarLayout))
+
+        if(mHomeFragment == null) {
+            mHomeFragment = HomeFragment.newInstance()
+            mHomeFragment!!.setOnScrollListener(ExtendOnScrollChangedListener(appBarLayout))
+        }
         transaction.replace(R.id.container, mHomeFragment as androidx.fragment.app.Fragment)
         transaction.commit()
     }
 
     fun createFragmentRanking(transaction : FragmentTransaction) {
-        mRankingFragment = RankingFragment.newInstance()
+        if(mRankingFragment == null) {
+            mRankingFragment = RankingFragment.newInstance()
+        }
         transaction.replace(R.id.container, mRankingFragment as androidx.fragment.app.Fragment)
         transaction.commit()
     }
 
     fun createFragmentNews(transaction : FragmentTransaction) {
-        mNewsFragment = NewsFragment.newInstance()
+        if(mNewsFragment == null) {
+            mNewsFragment = NewsFragment.newInstance()
+        }
         transaction.replace(R.id.container, mNewsFragment as androidx.fragment.app.Fragment)
         transaction.commit()
     }
@@ -137,7 +151,7 @@ class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
 
     class ExtendOnScrollChangedListener : View.OnScrollChangeListener {
 
-        var mActionBar : View? get() { return mActionBar }
+        var mActionBar : View? = null
 
         constructor(view : View) {
             mActionBar = view

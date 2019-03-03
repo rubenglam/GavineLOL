@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
-    <ImageButton android:id="@+id/btnProfile"
+    <ImageButton android:id="@+id/btnSearch"
         android:layout_gravity="center"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -25,7 +25,7 @@
         android:textSize="@dimen/app_title_text_size"
         android:textColor="@color/colorPrimary"/>
 
-    <ImageButton android:id="@+id/btnProfile2"
+    <ImageButton android:id="@+id/btnProfile"
         android:layout_gravity="center"
         android:layout_marginRight="60dp"
         android:layout_width="35dp"

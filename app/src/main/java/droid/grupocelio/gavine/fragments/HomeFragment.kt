@@ -49,7 +49,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
     }
 
     override fun onStart() {
-        //if(homeScrollView?.scrollY == 0)
         homeScrollView?.setOnScrollChangeListener(mScrollChangedListener)
         super.onStart()
     }
