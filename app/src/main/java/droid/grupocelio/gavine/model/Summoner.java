@@ -1,8 +1,11 @@
 package droid.grupocelio.gavine.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import droid.grupocelio.gavine.dao.SummonerDAO;
 
-public class Summoner {
+public class Summoner implements Parcelable {
 
     int profileIconId;
     String name;
@@ -10,10 +13,49 @@ public class Summoner {
     int summonerLevel;
     long revisionDate;
     String encryptedId;
-    String accountEncryptedId;
+    String encryptedAccountId;
 
-    public static Summoner getSummonerByName(String name) throws Exception
-    {
+    public Summoner() {}
+
+    protected Summoner(Parcel in) {
+        profileIconId = in.readInt();
+        name = in.readString();
+        puuid = in.readString();
+        summonerLevel = in.readInt();
+        revisionDate = in.readLong();
+        encryptedId = in.readString();
+        encryptedAccountId = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(profileIconId);
+        dest.writeString(name);
+        dest.writeString(puuid);
+        dest.writeInt(summonerLevel);
+        dest.writeLong(revisionDate);
+        dest.writeString(encryptedId);
+        dest.writeString(encryptedAccountId);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Summoner> CREATOR = new Creator<Summoner>() {
+        @Override
+        public Summoner createFromParcel(Parcel in) {
+            return new Summoner(in);
+        }
+
+        @Override
+        public Summoner[] newArray(int size) {
+            return new Summoner[size];
+        }
+    };
+
+    public static Summoner getSummonerByName(String name) throws Exception {
         Summoner summoner = SummonerDAO.getSummonerByName(name);
         return summoner;
     }
@@ -84,11 +126,11 @@ public class Summoner {
     }
 
     public String getAccountEncryptedId() {
-        return accountEncryptedId;
+        return encryptedAccountId;
     }
 
     public void setAccountEncryptedId(String accountEncryptedId) {
-        this.accountEncryptedId = accountEncryptedId;
+        this.encryptedAccountId = accountEncryptedId;
     }
 
 }
