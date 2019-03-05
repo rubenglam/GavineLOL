@@ -12,6 +12,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import droid.grupocelio.gavine.R
 
 class AccountDialog : DialogFragment() {
 
@@ -35,24 +36,18 @@ class AccountDialog : DialogFragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.layout_dialog, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater!!.inflate(R.layout.view_action_bar, container, false)
 
-        val btnCancel = view.findViewById<View>(R.id.buttonCancel) as Button
-        val btnAccept = view.findViewById<View>(R.id.buttonAccept) as ImageButton
+        val btnCancel = view.findViewById<View>(R.id.dialog1) as Button
 
-        val textViewContent = view.findViewById<View>(R.id.textViewContent) as TextView
+        val textViewContent = view.findViewById<View>(R.id.dialog2) as TextView
         textViewContent.text = content
 
         //FontUtils.setTypeface(getActivity(), textViewQuestion, "fonts/mangal.ttf");
         //FontUtils.setTypeface(getActivity(), textViewAnswer, "fonts/mangal.ttf");
         btnCancel.setOnClickListener {
             Toast.makeText(activity, "action cancelled", Toast.LENGTH_SHORT).show()
-            dismiss()
-        }
-
-        btnAccept.setOnClickListener {
-            Toast.makeText(activity, "User Accepted Action", Toast.LENGTH_SHORT).show()
             dismiss()
         }
 
