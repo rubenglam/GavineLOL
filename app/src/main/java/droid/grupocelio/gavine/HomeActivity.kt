@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.WindowDecorActionBar
 import androidx.fragment.app.FragmentTransaction
 import droid.grupocelio.gavine.fragments.*
+import droid.grupocelio.gavine.views.AccountDialog
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.view_action_bar.*
 import org.w3c.dom.Text
@@ -59,7 +60,11 @@ class HomeActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
         navigation_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         (navigation_view as BottomNavigationView).selectedItemId = R.id.navigation_home
 
-        AlertDialog.Builder(this).create()
+        btnProfile.setOnClickListener {
+            val suppTransaction = supportFragmentManager.beginTransaction();
+            val fragmentDialog = AccountDialog.newInstance("hola");
+            fragmentDialog.show(suppTransaction, "dialog")
+        }
 
     }
 
