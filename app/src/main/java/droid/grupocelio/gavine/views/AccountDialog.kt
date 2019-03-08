@@ -39,6 +39,7 @@ class AccountDialog : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_account_dialog, container, false)
 
+        dialog!!.window?.addFlags(android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         val btnCancel = view.findViewById<View>(R.id.dialog1) as Button
 
         val textViewContent = view.findViewById<View>(R.id.dialog2) as TextView
